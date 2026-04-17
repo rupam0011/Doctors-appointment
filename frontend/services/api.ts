@@ -90,7 +90,7 @@ export const createDoctor = async (data: { name: string; specialization: string;
 
 // ==================== Appointments API ====================
 
-export const createAppointment = async (data: BookingPayload): Promise<{ message: string; appointment: any }> => {
+export const createAppointment = async (data: BookingPayload): Promise<{ message: string; appointment: unknown }> => {
   const response = await api.post("/appointments", data);
   return response.data;
 };

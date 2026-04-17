@@ -30,6 +30,7 @@ export const useCancelAppointment = () => {
       queryClient.invalidateQueries({ queryKey: ["my-appointments"] });
       queryClient.invalidateQueries({ queryKey: ["all-appointments"] });
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onError: (error: any) => {
       const message = error?.response?.data?.message || "Failed to cancel appointment";
       toast.error(message);

@@ -23,6 +23,7 @@ function VerifyEmailContent() {
         const data = await verifyEmail(token);
         setStatus("success");
         setMessage(data.message);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         setStatus("error");
         setMessage(error?.response?.data?.message || "Verification failed.");

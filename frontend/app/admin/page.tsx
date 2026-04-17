@@ -37,6 +37,7 @@ function AdminContent() {
       toast.success("Doctor added successfully");
       setIsModalOpen(false);
       setNewDoctor({ name: "", specialization: "Cardiologist", fees: "" });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast.error(error.response?.data?.message || "Failed to add doctor");
     } finally {

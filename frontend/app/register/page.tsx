@@ -48,6 +48,7 @@ export default function RegisterPage() {
       toast.success("Registration successful! Check your email.");
       console.log("Verification token:", data.verificationToken);
       setIsSuccess(true);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       const message = error?.response?.data?.message || "Registration failed. Please try again.";
       toast.error(message);

@@ -40,6 +40,7 @@ export default function LoginPage() {
       } else {
         router.push("/doctors");
       }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       const message = error?.response?.data?.message || "Login failed. Please try again.";
       toast.error(message);

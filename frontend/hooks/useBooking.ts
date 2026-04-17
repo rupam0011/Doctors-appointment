@@ -15,6 +15,7 @@ export const useBooking = () => {
       queryClient.invalidateQueries({ queryKey: ["my-appointments"] });
       queryClient.invalidateQueries({ queryKey: ["doctors"] });
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onError: (error: any) => {
       const status = error?.response?.status;
       const message = error?.response?.data?.message || "Failed to book appointment";
