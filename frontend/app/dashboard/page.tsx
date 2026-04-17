@@ -125,7 +125,7 @@ function DashboardContent() {
                   href="/doctors"
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-lg shadow-indigo-200 hover:shadow-xl hover:shadow-indigo-300 transition-all duration-300"
                 >
-                  Find a Doctor →
+                  Find a Doctors →
                 </Link>
               </div>
             )}
