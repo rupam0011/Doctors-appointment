@@ -38,7 +38,7 @@ const AppointmentCard: React.FC<AppointmentCardProps> = ({
               {doctor?.specialization || "N/A"}
             </p>
 
-            {/* User info (for admin view) */}
+            {/* User info */}
             {showUser && user && (
               <div className="flex items-center gap-2 mb-3 text-sm text-slate-500">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,7 +48,7 @@ const AppointmentCard: React.FC<AppointmentCardProps> = ({
               </div>
             )}
 
-            {/* Date & Time */}
+            {/* Date and Time */}
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex items-center gap-1.5 text-sm text-slate-600">
                 <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

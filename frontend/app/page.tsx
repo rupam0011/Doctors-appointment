@@ -5,7 +5,7 @@ export default function Home() {
     <div className="animate-fade-in">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-        {/* Background decorations */}
+        {/* Background  */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-indigo-200/30 to-purple-200/30 blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-blue-200/30 to-indigo-200/30 blur-3xl" />
@@ -34,7 +34,7 @@ export default function Home() {
               and book your appointment in under 60 seconds.
             </p>
 
-            {/* CTAs */}
+            {/* button */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/doctors"

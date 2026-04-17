@@ -12,7 +12,7 @@ export const createAppointment = async (
     const { doctorId, date, time } = req.body;
     const userId = req.user?.id;
 
-    // Validation
+
     if (!doctorId || !date || !time) {
       res.status(400).json({ message: "doctorId, date, and time are required" });
       return;
@@ -23,14 +23,14 @@ export const createAppointment = async (
       return;
     }
 
-    // Check if doctor exists
+
     const doctor = await Doctor.findById(doctorId);
     if (!doctor) {
       res.status(404).json({ message: "Doctor not found" });
       return;
     }
 
-    // Check if the requested slot is in the doctor's available slots
+
     const slotExists = doctor.availableSlots.some(
       (slot) => slot.date === date && slot.time === time
     );
@@ -39,8 +39,7 @@ export const createAppointment = async (
       return;
     }
 
-    // CRITICAL: Check for double-booking
-    // Check if an appointment already exists for the same doctor, date, time with "booked" status
+
     const existingAppointment = await Appointment.findOne({
       doctorId,
       date,
@@ -56,7 +55,6 @@ export const createAppointment = async (
     }
 
     // Create the appointment
-    // The partial unique index on the Appointment model will also prevent race conditions
     try {
       const appointment = await Appointment.create({
         userId,
@@ -75,7 +73,6 @@ export const createAppointment = async (
         appointment: populatedAppointment,
       });
     } catch (error: any) {
-      // Handle duplicate key error from the partial unique index (race condition safety net)
       if (error.code === 11000) {
         res.status(409).json({
           message: "This time slot is already booked. Please choose a different slot.",
@@ -139,7 +136,7 @@ export const cancelAppointment = async (
       return;
     }
 
-    // Verify this appointment belongs to the authenticated user
+  
     if (appointment.userId.toString() !== userId) {
       res.status(403).json({ message: "You can only cancel your own appointments" });
       return;

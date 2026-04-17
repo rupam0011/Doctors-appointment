@@ -7,7 +7,7 @@ const isAdmin = (
   next: NextFunction
 ): void => {
   if (!req.user || req.user.role !== "admin") {
-    res.status(403).json({ message: "Access denied. Admin privileges required." });
+    res.status(403).json({ message: "Access denied. Need to be Admin." });
     return;
   }
   next();

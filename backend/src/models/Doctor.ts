@@ -53,7 +53,6 @@ const doctorSchema = new Schema<IDoctor>(
   { timestamps: true }
 );
 
-// Index for filtering by specialization
 doctorSchema.index({ specialization: 1 });
 
 export default mongoose.model<IDoctor>("Doctor", doctorSchema);

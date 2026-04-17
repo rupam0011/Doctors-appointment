@@ -22,12 +22,11 @@ export default function BookPage({ params }: BookPageProps) {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
-  // Get unique dates from available slots
+
   const availableDates = doctor
     ? [...new Set(doctor.availableSlots.map((s) => s.date))].sort()
     : [];
 
-  // Get times for selected date
   const availableTimes = doctor && selectedDate
     ? doctor.availableSlots
         .filter((s) => s.date === selectedDate)
@@ -98,7 +97,7 @@ export default function BookPage({ params }: BookPageProps) {
   return (
     <div className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-slate-50 to-indigo-50/30 animate-fade-in">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {/* Back link */}
+        
         <Link
           href="/doctors"
           className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-indigo-600 mb-8 transition-colors"
@@ -136,7 +135,7 @@ export default function BookPage({ params }: BookPageProps) {
 
           {/* Booking Section */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Step 1: Select Date */}
+            {/* Select Date */}
             <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-6">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
@@ -184,7 +183,7 @@ export default function BookPage({ params }: BookPageProps) {
               )}
             </div>
 
-            {/* Step 2: Select Time */}
+            {/* Select Time */}
             <div className={`bg-white rounded-2xl border border-slate-200/60 shadow-sm p-6 transition-opacity duration-300 ${!selectedDate ? "opacity-50 pointer-events-none" : ""}`}>
               <div className="flex items-center gap-3 mb-5">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${selectedDate ? "bg-indigo-100" : "bg-slate-100"}`}>
@@ -216,7 +215,7 @@ export default function BookPage({ params }: BookPageProps) {
               )}
             </div>
 
-            {/* Step 3: Confirm */}
+            {/* Confirm */}
             <div className={`bg-white rounded-2xl border border-slate-200/60 shadow-sm p-6 transition-opacity duration-300 ${!selectedTime ? "opacity-50 pointer-events-none" : ""}`}>
               <div className="flex items-center gap-3 mb-5">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${selectedTime ? "bg-indigo-100" : "bg-slate-100"}`}>

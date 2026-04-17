@@ -87,7 +87,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-purple-50 px-4 py-12 animate-fade-in">
-      {/* Background decorations */}
+      {/* Background  */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-20 w-72 h-72 rounded-full bg-purple-200/20 blur-3xl" />
         <div className="absolute bottom-20 right-20 w-72 h-72 rounded-full bg-indigo-200/20 blur-3xl" />

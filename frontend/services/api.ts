@@ -12,7 +12,7 @@ import {
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
-// Create Axios instance
+// Axios instance
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -20,7 +20,7 @@ const api = axios.create({
   },
 });
 
-// Request interceptor to attach JWT token
+
 api.interceptors.request.use(
   (config) => {
     if (typeof window !== "undefined") {
@@ -34,7 +34,6 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Response interceptor for error handling
 api.interceptors.response.use(
   (response) => response,
   (error) => {

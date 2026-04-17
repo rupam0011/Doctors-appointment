@@ -3,14 +3,12 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { v4 as uuidv4 } from "uuid";
 import User from "../models/User";
-import sendEmail from "../utils/sendEmail";
+
 
 // POST /api/register
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, email, password, role } = req.body;
-
-    // Validation
     if (!name || !email || !password) {
       res.status(400).json({ message: "Name, email, and password are required" });
       return;
@@ -21,18 +19,18 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // Check if user already exists
+
     const existingUser = await User.findOne({ email: email.toLowerCase() });
     if (existingUser) {
       res.status(409).json({ message: "User with this email already exists" });
       return;
     }
 
-    // Hash password
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Generate verification token
+
     const verificationToken = uuidv4();
 
     // Create user
@@ -41,7 +39,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       email: email.toLowerCase(),
       password: hashedPassword,
       role: role === "admin" ? "admin" : "user",
-      isVerified: true, // Auto-verified for demo purposes
+      isVerified: true,
       verificationToken: null,
     });
 
@@ -96,13 +94,13 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, password } = req.body;
 
-    // Validation
+  
     if (!email || !password) {
       res.status(400).json({ message: "Email and password are required" });
       return;
     }
 
-    // Find user
+ 
     const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
       res.status(401).json({ message: "Invalid email or password" });
@@ -111,14 +109,14 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
 
 
-    // Compare password
+   
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       res.status(401).json({ message: "Invalid email or password" });
       return;
     }
 
-    // Generate JWT
+ 
     const secret = process.env.JWT_SECRET;
     if (!secret) {
       res.status(500).json({ message: "Server configuration error" });

@@ -39,8 +39,6 @@ const appointmentSchema = new Schema<IAppointment>(
   { timestamps: true }
 );
 
-// Compound index to efficiently check for double-bookings
-// This partial unique index ensures only ONE booked appointment per doctor/date/time
 appointmentSchema.index(
   { doctorId: 1, date: 1, time: 1 },
   {
